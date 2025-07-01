@@ -1,0 +1,30 @@
+{
+  "short_name": "Quide",
+  "name": "Quide",
+  "icons": [
+    {
+      "src": "Quide-192.png",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "Quide-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+        {
+      "src": "Quide-256.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "Quide-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "target": "ESNext",                      // Modern JS features
+    "module": "CommonJS",                    // Electron uses CommonJS
+    "moduleResolution": "node",              // Resolve node_modules
+    "lib": ["ESNext", "DOM"],                // For Electron + web APIs
+    "outDir": "../dist-electron",            // Output for Electron main process
+    "baseUrl": ".",                          // Base for relative imports
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "allowJs": false,
+    "checkJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
+    "noEmitOnError": true,
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "strict": true,
+    "types": ["node", "electron"],
+    "useDefineForClassFields": true         // Better class field behavior
+  },
+  "include": ["./**/*.ts"],
+  "exclude": ["../dist-electron", "../node_modules"]
+}
