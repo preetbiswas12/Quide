@@ -1,4 +1,4 @@
-name: Build Quide for macOS (Intel + Apple Silicon)
+name: 🚀 Build Quide for macOS (Intel + Apple Silicon)
 
 on:
   push:
@@ -6,27 +6,32 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-mac:
+  build-macos:
+    name: 🛠 Build macOS (${{ matrix.arch }})
     runs-on: macos-14
     strategy:
       matrix:
-        arch: [x64, arm64]
-
+        arch: [x64, arm64] # Intel and Apple Silicon
     steps:
+      # Step 1: Checkout repo
       - name: 📦 Checkout repository
         uses: actions/checkout@v3
 
+      # Step 2: Setup Node.js
       - name: 🧰 Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      - name: 📦 Install pnpm
+      # Step 3: Setup pnpm
+      - name: 📦 Setup pnpm
         uses: pnpm/action-setup@v2
         with:
           version: 8
+          run_install: false
 
-      - name: ♻️ Enable pnpm cache
+      # Step 4: Cache pnpm store
+      - name: ♻️ Cache pnpm store
         uses: actions/cache@v3
         with:
           path: ~/.pnpm-store
@@ -34,14 +39,19 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-
 
+      # Step 5: Install dependencies with lockfile
       - name: 📥 Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: 🛠 Build Quide.app for macOS (${{ matrix.arch }})
-        run: pnpm run dist -- --mac --dir --${{ matrix.arch }}
+      # Step 6: Build Quide.app for target arch
+      - name: 🏗 Build Quide.app (${{ matrix.arch }})
+        run: |
+          pnpm run dist -- --mac --dir --${{ matrix.arch }}
 
+      # Step 7: Upload .app bundle as artifact
       - name: ⬆️ Upload Quide.app (${{ matrix.arch }})
         uses: actions/upload-artifact@v4
         with:
           name: Quide-mac-${{ matrix.arch }}
           path: dist/mac-${{ matrix.arch }}/Quide.app
+
