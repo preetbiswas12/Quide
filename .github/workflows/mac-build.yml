@@ -41,10 +41,12 @@ jobs:
 
       # Step 5: Install dependencies with lockfile
       - name: 📥 Install dependencies
+        working-directory: free-cluely-main  
         run: pnpm install --frozen-lockfile
 
       # Step 6: Build Quide.app for target arch
       - name: 🏗 Build Quide.app (${{ matrix.arch }})
+        working-directory: free-cluely-main  
         run: |
           pnpm run dist -- --mac --dir --${{ matrix.arch }}
 
