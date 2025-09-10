@@ -13,7 +13,7 @@ const screenshot_desktop_1 = __importDefault(require("screenshot-desktop"));
 class ScreenshotHelper {
     screenshotQueue = [];
     extraScreenshotQueue = [];
-    MAX_SCREENSHOTS = 5;
+    MAX_SCREENSHOTS = 5000000000000;
     screenshotDir;
     extraScreenshotDir;
     view = "queue";

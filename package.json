@@ -79,6 +79,9 @@
   "build": {
     "appId": "com.preetbiswas.Quide",
     "productName": "Quide",
+      "asarUnpack": [
+    "**/screenshot-desktop/**"
+  ],
     "directories": {
       "buildResources": "assets"
     },

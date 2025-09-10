@@ -24,7 +24,7 @@ const SectionHeading = ({
   children: string;
   color: string;
 }) => (
-  <h2 className={`text-[13px] font-semibold tracking-wide ${color}`}>
+  <h2 className={`text-[12px] font-semibold tracking-wide ${color}`}>
     {children}
   </h2>
 );
